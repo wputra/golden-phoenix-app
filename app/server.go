@@ -2,6 +2,7 @@ package main
 
 import (
     "net/http"
+    "os"
     "github.com/labstack/echo"
     "github.com/labstack/echo/middleware"
 )
@@ -15,7 +16,12 @@ func main() {
         return c.String(http.StatusOK, "Hello, World!")
     })
     e.GET("/process", process)
-    e.Logger.Fatal(e.Start(":9000"))
+
+    httpPort := os.Getenv("GOPORT")
+    if httpPort == "" {
+        httpPort = "9000"
+    }
+    e.Logger.Fatal(e.Start(":" + httpPort))
 }
 
 func process(c echo.Context) error {
