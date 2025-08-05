@@ -21,7 +21,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o myapp .
 FROM alpine:latest
 
 WORKDIR /app
-ENV GOPORT=8080
+ENV GOPORT=80
 
 # Copy the compiled binary from the build stage
 COPY --from=builder /app/myapp .
