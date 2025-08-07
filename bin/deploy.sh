@@ -2,11 +2,11 @@
 
 # Define variables
 ECS_CLUSTER_NAME="golden-phoenix-ecs"
-ECS_SERVICE_NAME="$0"
+ECS_SERVICE_NAME="$1"
 AWS_REGION="ap-southeast-1"
-NEW_IMAGE_TAG="$1" # e.g., latest, a specific version, or a build number
-ECR_REPOSITORY_URI="golden-phoenix" # e.g., 123456789012.dkr.ecr.us-east-1.amazonaws.com/your-repo-name
-TASK_DEFINITION_NAME="$0" # The base task definition name
+NEW_IMAGE_TAG="$2" # e.g., latest, a specific version, or a build number
+ECR_REPOSITORY_URI="057493959474.dkr.ecr.$AWS_REGION.amazonaws.com/golden-phoenix" # e.g., 123456789012.dkr.ecr.us-east-1.amazonaws.com/your-repo-name
+TASK_DEFINITION_NAME="$1" # The base task definition name
 
 # 1. Get the current active task definition ARN
 echo "Getting current active task definition for service: $ECS_SERVICE_NAME"
