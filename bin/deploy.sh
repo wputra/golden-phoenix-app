@@ -42,7 +42,7 @@ fi
 echo "Updating image tag in task definition..."
 UPDATED_TASK_DEFINITION_JSON=$(echo "$TASK_DEFINITION_JSON" | jq \
     --arg image_uri "${ECR_REPOSITORY_URI}:${NEW_IMAGE_TAG}" \
-    '.containerDefinitions[0].image = $image_uri | del(.taskDefinitionArn, .revision, .status, .compatibilities, .registeredAt, .registeredBy, .requiresAttributes)')
+    '.containerDefinitions[0].image = $image_uri | del(.taskDefinitionArn, .revision, .status, .compatibilities, .registeredAt, .registeredBy, .requiresAttributes, .deregisteredAt)')
 
 if [ -z "$UPDATED_TASK_DEFINITION_JSON" ]; then
     echo "Error: Could not update image tag in task definition JSON."
